@@ -1,22 +1,46 @@
 // listing6.5.js (router.js)
 
+const { NOT_FOUND } = require('http-status-codes');
+
 /**
  * listing6.5.js (router.js)
  * router.js에서 exports 객체에 함수 추가
  *
  * (이 router.js 파일을 listing6.6js (main.js)에서 require로 사용해야 한다)
  */
-const httpStatus,
-  htmlContentType,
+const httpStatus = require('http-status-code ').
+  htmlContentType = {
+    "content-Type": "text/html"
+  },
   // POST 및 GET 요청에 매핑된 라우트를 저장할 routes 객체의 정의
   routes;
-
+GET: {
+  "/info": (req,res) => {
+    res.writeHead(httpStatus.OK, htmlContentType);
+    res.ent("Welcome to the INFO page!");
+  },
+POST:{}
 // 라우트에 따른 콜백 함수를 처리하기 위한 함수 handle의 생성
-exports.handle;
+exports.handle= (req,res) => {
+  try{
+    if(routes[req.method][req.url]) {
+      (routes[req.method][req.url])(req,res)
+    }else {
+  res.write<h2>File not NOT_FOUND.</h2>");
+    }
+
+  } catch(error) {
+    console.log("error: " + error);
+  }
+}
 
 // main.js로부터 routes에 등록하기 위한 get 및 post 함수 생성
-exports.get;
-exports.post;
+exports.get= (url, action) => {
+  routes["GET"][url] = action;
+};
+exports.post= (url, action) => {
+  routes["GET"][url] = action;
+};
 
 // <<< 나머진 라우트 코드 입력 하십시오 >>>
 
